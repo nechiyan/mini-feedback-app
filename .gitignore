@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+.env
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Django specific
+*.log
+local_settings.py
+# db.sqlite3
+media/
+staticfiles/
+static/
+db.sqlite3
+
+# VSCode or IDEs
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Pytest and coverage
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+**/migrations/__pycache__/
+
+# Migrations (optional: uncomment if you don't want to track them)
+**/migrations/
+
+# pip tools
+pip-log.txt
+
+# --------------frontent-----------------
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
