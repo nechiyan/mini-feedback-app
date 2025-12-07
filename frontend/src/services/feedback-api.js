@@ -1,17 +1,18 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-// FETCH FEEDBACKS
-export function useGetFeedbacksQuery() {
+// FETCH FEEDBACKS (Paginated)
+export function useGetFeedbacksQuery(page, ordering, search) {
   return useQuery({
-    queryKey: ["feedbacks"],
+    queryKey: ["feedbacks", page, ordering, search],
     queryFn: async () => {
-      const res = await fetch(API_URL);
+      const res = await fetch(
+        `${API_URL}?page=${page}&ordering=${ordering}&search=${search}`
+      );
       if (!res.ok) throw new Error("Failed to fetch feedbacks");
       return res.json();
-  },
+    },
   });
 }
 
@@ -30,7 +31,7 @@ export function useCreateFeedbackMutation() {
       return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["feedbacks"]);
+      queryClient.invalidateQueries({ queryKey: ["feedbacks"] });
     },
   });
 }
@@ -43,10 +44,10 @@ export function useDeleteFeedbackMutation() {
     mutationFn: async (id) => {
       const res = await fetch(`${API_URL}${id}/`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete feedback");
-      return res.json();
+      return true;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["feedbacks"]);
+      queryClient.invalidateQueries({ queryKey: ["feedbacks"] });
     },
   });
 }

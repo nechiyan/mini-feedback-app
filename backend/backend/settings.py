@@ -36,6 +36,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.OrderingFilter',
+    ]
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
