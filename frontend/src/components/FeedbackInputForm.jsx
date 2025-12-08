@@ -10,6 +10,7 @@ const schema = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
   comment: z.string().optional(),
+  phone_number: z.string().optional(),
   rating: z.number().min(1, "Rating is required"),
 });
 
@@ -46,6 +47,11 @@ export default function FeedbackInputForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <InputField label="Name" {...register("name")} error={errors.name} />
         <InputField label="Email" {...register("email")} error={errors.email} />
+        <InputField
+          label="mobile"
+          {...register("phone_number")}
+          error={errors.phone_number}
+        />
         <TextareaField
           label="Comment"
           {...register("comment")}
@@ -80,7 +86,6 @@ export default function FeedbackInputForm() {
           </div>
         </div>
       )}
-      
     </div>
   );
 }

@@ -22,6 +22,7 @@ export default function FeedbackItem({ feedback, page }) {
         <div>
           <p className="font-semibold">{feedback.name}</p>
           <p className="text-sm text-gray-500">{feedback.email}</p>
+          <p className="text-sm text-gray-500">{feedback?.phone_number ||''}</p>
         </div>
         <div className="flex items-center gap-3">
           {[...Array(feedback.rating)].map((_, i) => (
